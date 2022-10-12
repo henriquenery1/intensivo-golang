@@ -3,6 +3,8 @@ package main
 import (
 	"database/sql"
 	"net/http"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type Product struct {
