@@ -32,4 +32,5 @@ func SaveProduct(product Product) {
 	if err != nil {
 		panic(err)
 	}
+	defer db.Close()
 }
