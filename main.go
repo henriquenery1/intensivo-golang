@@ -17,7 +17,10 @@ func main() {
 		Name: "Product 1",
 		Price: 100.00,
 	}
-	println(pruduct.ID)
+	err := SaveProduct(pruduct)
+	if err != nil {
+		panic(err)
+	}
 
 	http.HandleFunc("/", homeHandler)
 	http.ListenAndServe(":3000", nil)
