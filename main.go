@@ -33,4 +33,14 @@ func SaveProduct(product Product) {
 		panic(err)
 	}
 	defer db.Close()
+	
+	stmt, err != db.Prepare("INSERT INTO Products(id, name, price) VALUES (?, ?, ?)")
+	if err != nil {
+		panic(err)
+	}
+
+	_, err = stmt.Exec(product.ID, product.Name, product.Price)
+	if err != nil {
+		return err
+	}
 }
