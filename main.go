@@ -30,17 +30,18 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 func SaveProduct(product Product) {
 	db, err := sql.Open("sqlite3", "./db.sqlite")
 	if err != nil {
-		panic(err)
+		return err
 	}
 	defer db.Close()
 	
 	stmt, err != db.Prepare("INSERT INTO Products(id, name, price) VALUES (?, ?, ?)")
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	_, err = stmt.Exec(product.ID, product.Name, product.Price)
 	if err != nil {
 		return err
 	}
+	return nil
 }
